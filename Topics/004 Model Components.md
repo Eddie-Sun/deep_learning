@@ -128,6 +128,36 @@ visualize_before_after_pca(X_small, n_components=2)
 
 ### Convolutional Layers
 
+Here is the intuition for [discrete](https://www.youtube.com/watch?v=KuXjwB4LzSA) and [continuous](https://www.youtube.com/watch?v=KuXjwB4LzSA) convolutions.
+
+Discrete Convolution:
+$$ (a * b)_n = \sum_{i+j=n} a_i \cdot b_j $$
+- \( (a * b)_n \): The \( n \)-th element of the result of the convolution.
+- \( \sum \): The summation symbol, indicating that we sum over all valid \( i \) and \( j \).
+- \( i, j \): Indices used to iterate over the elements of sequences \( a \) and \( b \).
+- \( a_i \): The \( i \)-th element of the sequence \( a \).
+- \( b_j \): The \( j \)-th element of the sequence \( b \).
+- \( i+j=n \): The condition for summation, where the indices \( i \) and \( j \) add up to \( n \).
+
+Continuous Convolution:
+$$ (f * g)(t) = \int_{-\infty}^{\infty} f(\tau) \cdot g(t - \tau) d\tau $$
+
+- \( (f * g)(t) \): The convolution of functions \( f \) and \( g \) evaluated at time \( t \).
+- \( \int \): The integral symbol, indicating that we integrate over the entire range of \( \tau \).
+- \( -\infty \), \( \infty \): The limits of integration, extending over all real numbers.
+- \( f(\tau) \): The function \( f \) evaluated at \( \tau \).
+- \( g(t - \tau) \): The function \( g \) evaluated at \( t - \tau \), showing how \( g \) is shifted by \( \tau \) before being multiplied by \( f(\tau) \).
+- \( d\tau \): The differential element for the variable \( \tau \), indicating that we integrate with respect to \( \tau \).
+- \( t \): The variable representing time or the independent variable in the output function.
+- \( \tau \): A dummy variable of integration, used as a placeholder to integrate over.
+
+
+
+Convolutional layers operate on sub-tensors. In the context of an image, its a small patch of pixels.
+
+Q: Why is that important?
+
+
 <!--START OF FOOTER-->
 <hr style="margin-top:9px;height:1px;border: 0;background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.0));">
 <!--START OF ISSUE NAVIGATION LINKS-->
