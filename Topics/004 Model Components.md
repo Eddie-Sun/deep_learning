@@ -16,7 +16,11 @@ Where:
 - b = is a translation vector.
 
 ### Dense Layers/fully connected layers
-The fully connected layer (every neuron is connected) is simple affine transformation that can work with input/outputs from multi-dimensional tensors.
+The [fully connected](https://www.youtube.com/watch?v=Tsvxx-GGlTg) layer (every neuron is connected) is simple affine transformation that can work with input/outputs from multi-dimensional tensors. The mathematical expression is:
+
+$$ Y[d_1, d_2, \ldots, d_K] = W \cdot X[d_1, d_2, \ldots, d_K] + b $$
+
+The input tensor X with dimensions D<sub>1</sub> × D<sub>2</sub> × … × D<sub>K</sub> × D, resulting in an output tensor Y with dimensions D<sub>1</sub> × D<sub>2</sub> × … × D<sub>K</sub> × D'. The weight matrix W is of size D' × D, and b is the bias vector of dimension D'.
 
 <details>
   <summary>Python Function to Visualize Fully Connected Layer</summary>
@@ -65,9 +69,64 @@ def visualize_affine_transformation(input_dims, output_dim):
 # Example usage: visualizing a 2D input tensor transforming to a different dimension
 visualize_affine_transformation(input_dims=(10, 20), output_dim=5)
 ```
+<img src="image-1.png" alt="Alt text" width="500"/>  
+</details>
+</br>
+
+[Projections](https://www.cuemath.com/geometry/projection-vector/) can be used for dimension reduction or singal filtering.
+<details>
+  <summary>Python Function to Visualize Dimensionality Reduction</summary>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+from mpl_toolkits.mplot3d import Axes3D
+
+def visualize_before_after_pca(data, n_components=2):
+    """
+    Visualize the data before and after applying PCA for dimensionality reduction.
+
+    :param data: The input data as a 2D numpy array.
+    :param n_components: The number of dimensions to reduce the data to.
+    """
+    # Apply PCA for dimensionality reduction
+    pca = PCA(n_components=n_components)
+    reduced_data = pca.fit_transform(data)
+
+    # Visualization
+    fig = plt.figure(figsize=(15, 6))
+
+    # Before PCA: Plotting the original data in 3D
+    ax1 = fig.add_subplot(1, 2, 1, projection='3d')
+    ax1.scatter(data[:, 0], data[:, 1], data[:, 2], alpha=0.7, color='blue')
+    ax1.set_title("Original Data (3D)")
+    ax1.set_xlabel('Feature 1')
+    ax1.set_ylabel('Feature 2')
+    ax1.set_zlabel('Feature 3')
+
+    # After PCA: Plotting the reduced data in 2D
+    ax2 = fig.add_subplot(1, 2, 2)
+    ax2.scatter(reduced_data[:, 0], reduced_data[:, 1], alpha=0.7, color='red')
+    ax2.set_title("Data after PCA (2D)")
+    ax2.set_xlabel('Principal Component 1')
+    ax2.set_ylabel('Principal Component 2')
+
+    plt.show()
+
+# Generate a smaller synthetic dataset for clear visualization
+np.random.seed(0)
+X_small = np.random.rand(30, 3)  # 30 samples with 3 features
+
+# Visualize before and after PCA
+visualize_before_after_pca(X_small, n_components=2)
+
+```
+<img src="image-2.png" alt="Alt text" width="500"/> 
 </details>
 
-<img src="image-1.png" alt="Alt text" width="500"/>
+### Convolutional Layers
 
 <!--START OF FOOTER-->
 <hr style="margin-top:9px;height:1px;border: 0;background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.0));">
