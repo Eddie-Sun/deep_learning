@@ -131,8 +131,7 @@ visualize_before_after_pca(X_small, n_components=2)
 Here is the intuition for [discrete](https://www.youtube.com/watch?v=KuXjwB4LzSA) and [continuous](https://www.youtube.com/watch?v=KuXjwB4LzSA) convolutions.
 
 Discrete Convolution:
-
-$ (a * b)_n = \sum_{i+j=n} a_i \cdot b_j $
+$(a * b)_n = \sum_{i+j=n} a_i \cdot b_j$
 
 - $(a * b)_n$: The $n$-th element of the result of the convolution.
 - $\sum$: The summation symbol, indicating that we sum over all valid $i$ and $j$.
@@ -142,8 +141,7 @@ $ (a * b)_n = \sum_{i+j=n} a_i \cdot b_j $
 - $i+j=n$: The condition for summation, where the indices $i$ and $j$ add up to $n$.
 
 Continuous Convolution:
-
-$ (f * g)(t) = \int_{-\infty}^{\infty} f(\tau) \cdot g(t - \tau) d\tau $
+$(f * g)(t) = \int_{-\infty}^{\infty} f(\tau) \cdot g(t - \tau) d\tau$
 
 - $(f * g)(t)$: The convolution of functions $f$ and $g$ evaluated at time $t$.
 - $\int$: The integral symbol, indicating that we integrate over the entire range of $\tau$.
