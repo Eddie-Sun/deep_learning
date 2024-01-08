@@ -5,7 +5,7 @@
 
 ## What is a layer?
 ### Linear Layers
-"Linear" in deep learning != [linear in math](https://en.wikipedia.org/wiki/Linearity#:~:text=In%20mathematics%2C%20a%20linear%20map,(x)%20for%20all%20%CE%B1.). The linear in layers, refers to an [affine operation](https://youtu.be/E3Phj6J287o?si=YW0ya5B9iY3OtiQb) (linear transformation): $ y = Ax + b $
+"Linear" in deep learning != [linear in math](https://en.wikipedia.org/wiki/Linearity#:~:text=In%20mathematics%2C%20a%20linear%20map,(x)%20for%20all%20%CE%B1.). The linear in layers, refers to an [affine operation](https://youtu.be/E3Phj6J287o?si=YW0ya5B9iY3OtiQb) (linear transformation): $y = Ax + b$
 
 Where: 
 - y = is the transformed vector.
@@ -14,7 +14,7 @@ Where:
 - b = is a translation vector.
 
 ### Dense Layers/Fully Connected Layers
-The [fully connected](https://www.youtube.com/watch?v=Tsvxx-GGlTg) layer (every neuron is connected) is simple affine transformation that can work with input/outputs from multi-dimensional tensors. The mathematical expression is: $ Y[d_1, d_2, \ldots, d_K] = W \cdot X[d_1, d_2, \ldots, d_K] + b $. The input tensor X with dimensions D<sub>1</sub> × D<sub>2</sub> × … × D<sub>K</sub> × D, resulting in an output tensor Y with dimensions D<sub>1</sub> × D<sub>2</sub> × … × D<sub>K</sub> × D'. The weight matrix W is of size D' × D, and b is the bias vector of dimension D'.
+The [fully connected](https://www.youtube.com/watch?v=Tsvxx-GGlTg) layer (every neuron is connected) is simple affine transformation that can work with input/outputs from multi-dimensional tensors. The mathematical expression is: $Y[d_1, d_2, \ldots, d_K] = W \cdot X[d_1, d_2, \ldots, d_K] + b$. The input tensor X with dimensions D<sub>1</sub> × D<sub>2</sub> × … × D<sub>K</sub> × D, resulting in an output tensor Y with dimensions D<sub>1</sub> × D<sub>2</sub> × … × D<sub>K</sub> × D'. The weight matrix W is of size D' × D, and b is the bias vector of dimension D'.
 
 <img src="../Images/affine_transformation.png" alt="Alt text" width="500"/>  
 
@@ -126,7 +126,7 @@ visualize_before_after_pca(X_small, n_components=2)
 
 ### Convolutional Layers
 
-[Discrete Convolution](https://www.youtube.com/watch?v=KuXjwB4LzSA): $(a*b)_n=\sum_{i+j=n}a_i\cdot b_j$
+[Discrete Convolution](https://www.youtube.com/watch?v=KuXjwB4LzSA): $(a * b)_n = \sum_{i+j=n} a_i \cdot b_j$
 
 - $(a * b)_n$: The $n$-th element of the result of the convolution.
 - $\sum$: The summation symbol, indicating that we sum over all valid $i$ and $j$.
