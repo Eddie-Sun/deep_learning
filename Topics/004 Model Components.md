@@ -122,7 +122,7 @@ visualize_before_after_pca(X_small, n_components=2)
 
 ### Convolutional Layers
 
-[Discrete Convolution](https://www.youtube.com/watch?v=KuXjwB4LzSA): $ (a * b)_n = \sum_{i+j=n} a_i \cdot b_j $
+[Discrete Convolution](https://www.youtube.com/watch?v=KuXjwB4LzSA): $(a*b)_n=\sum_{i+j=n}a_i\cdot b_j$
 
 - $(a * b)_n$: The $n$-th element of the result of the convolution.
 - $\sum$: The summation symbol, indicating that we sum over all valid $i$ and $j$.
@@ -174,7 +174,10 @@ plt.show()
 <img src="image-3.png" alt="Alt text" width="500"/> 
 </details>
 
-For a CNN, we use the network to determine what the kernal should be in the first place.
+<p></p>
+
+For a CNN, we use the network to determine what the kernal should be in the first place. Something to note is that the  Direct Convolution Method from the math definition mutiplies the elements of each signal by eachother using nested loops, which is $O(N^{2})$. By using the FFT-based Convolution Method (based on the [Convolution Theorem](https://en.wikipedia.org/wiki/Convolution_theorem)), we can get the runtime down to O(NlogN). 
+- [ ] Try to derive the proof for Convolution Theorem
 
 <p></p>
 
