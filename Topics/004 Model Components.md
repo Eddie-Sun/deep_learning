@@ -122,7 +122,7 @@ visualize_before_after_pca(X_small, n_components=2)
 
 ### Convolutional Layers
 
-[Discrete Convolution](https://www.youtube.com/watch?v=KuXjwB4LzSA): $(a * b)_n = \sum_{i+j=n} a_i \cdot b_j$
+[Discrete Convolution](https://www.youtube.com/watch?v=KuXjwB4LzSA): $ (a * b)_n = \sum_{i+j=n} a_i \cdot b_j $
 
 - $(a * b)_n$: The $n$-th element of the result of the convolution.
 - $\sum$: The summation symbol, indicating that we sum over all valid $i$ and $j$.
@@ -178,7 +178,7 @@ For a CNN, we use the network to determine what the kernal should be in the firs
 
 <p></p>
 
-[Continuous Convolution]((https://www.youtube.com/watch?v=KuXjwB4LzSA)): $(f * g)(t) = \int_{-\infty}^{\infty} f(\tau) \cdot g(t - \tau) d\tau$
+[Continuous Convolution]((https://www.youtube.com/watch?v=IaSGqQa5O-M)): $(f * g)(t) = \int_{-\infty}^{\infty} f(\tau) \cdot g(t - \tau) d\tau$
 
 - $(f * g)(t)$: The convolution of functions $f$ and $g$ evaluated at time $t$.
 - $\int$: The integral symbol, indicating that we integrate over the entire range of $\tau$.
