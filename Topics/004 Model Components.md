@@ -208,9 +208,70 @@ $(f * g)(t) = \int_{-\infty}^{\infty} f(\tau) \cdot g(t - \tau) d\tau$
   <summary>Code for Continuous Convolution</summary>
 
 ```python
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 
+# Define the piecewise function f(x) and the Gaussian function g(y)
+def f_piecewise(x):
+    return np.where(x < 0, 0.5 * x + 1, -0.5 * x + 1)
+
+def g_modified(y):
+    return 0.5 * np.exp(-(y - 1)**2) + np.exp(-(y + 1)**2)
+
+# Vectorize f_piecewise to apply on numpy arrays
+f_vectorized = np.vectorize(f_piecewise)
+
+# Generate values for x and y
+x_vals = np.linspace(-2, 2, 400)
+y_vals = np.linspace(-3, 3, 400)
+
+# Create meshgrid for the 3D surface
+X, Y = np.meshgrid(x_vals, y_vals)
+Z = f_vectorized(X) * g_modified(Y)
+
+# Plot all figures in a single combined figure
+fig = plt.figure(figsize=(14, 7))
+
+# Plot f(x)
+ax1 = fig.add_subplot(231)
+ax1.plot(x_vals, f_vectorized(x_vals), 'b')
+ax1.set_title('f(x)')
+ax1.grid(True)
+
+# Plot g(y)
+ax2 = fig.add_subplot(232)
+ax2.plot(y_vals, g_modified(y_vals), 'y')
+ax2.set_title('g(y)')
+ax2.grid(True)
+
+# 3D plot of f(x)g(y)
+ax3 = fig.add_subplot(233, projection='3d')
+ax3.plot_surface(X, Y, Z, cmap='viridis')
+ax3.set_title('f(x)g(y)')
+
+# Cross-section of f(x)g(y)
+s = 0.5  # Choose a value for the cross-section
+ax4 = fig.add_subplot(234, projection='3d')
+ax4.plot_surface(X, Y, Z, cmap='viridis', alpha=0.5)
+ax4.plot(x_vals, s - x_vals, f_vectorized(x_vals) * g_modified(s - x_vals), color='r', linewidth=2)
+ax4.set_title('Cross-section at x+y=s')
+
+# 2D projection (integral of cross-sections)
+integrated_cross_sections = np.trapz(Z, y_vals, axis=1)
+ax5 = fig.add_subplot(235)
+ax5.plot(x_vals, integrated_cross_sections)
+ax5.set_title('2D Projection of f(x)g(y) onto the x-axis')
+
+# Adjust layout and show the combined plot
+plt.tight_layout()
+plt.show()
 ```
 </details>
+
+At this point, we dove into the math behind layer + convolution. But what makes a CNN more useful than say a generic neural network? These videos helped me build an intuition: 
+1) [Neural Networks (refresher)](https://www.youtube.com/watch?v=l42lr8AlrHk)
+2) 
 
 <!--START OF FOOTER-->
 <hr style="margin-top:9px;height:1px;border: 0;background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.0));">
