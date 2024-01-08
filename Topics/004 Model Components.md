@@ -13,11 +13,13 @@ Where:
 - x = is the original vector.
 - b = is a translation vector.
 
-### Dense Layers/fully connected layers
+### Dense Layers/Fully Connected Layers
 The [fully connected](https://www.youtube.com/watch?v=Tsvxx-GGlTg) layer (every neuron is connected) is simple affine transformation that can work with input/outputs from multi-dimensional tensors. The mathematical expression is: $ Y[d_1, d_2, \ldots, d_K] = W \cdot X[d_1, d_2, \ldots, d_K] + b $. The input tensor X with dimensions D<sub>1</sub> × D<sub>2</sub> × … × D<sub>K</sub> × D, resulting in an output tensor Y with dimensions D<sub>1</sub> × D<sub>2</sub> × … × D<sub>K</sub> × D'. The weight matrix W is of size D' × D, and b is the bias vector of dimension D'.
 
+<img src="../Images/affine_transformation.png" alt="Alt text" width="500"/>  
+
 <details>
-  <summary>Python Function to Visualize Fully Connected Layer</summary>
+  <summary>Code for Fully Connected Layer</summary>
 
 ```python
 import numpy as np
@@ -63,13 +65,16 @@ def visualize_affine_transformation(input_dims, output_dim):
 # Example usage: visualizing a 2D input tensor transforming to a different dimension
 visualize_affine_transformation(input_dims=(10, 20), output_dim=5)
 ```
-<img src="image-1.png" alt="Alt text" width="500"/>  
+
 </details>
 </br>
 
-[Projections](https://www.cuemath.com/geometry/projection-vector/) can be used for dimension reduction or singal filtering.
+[Projections](https://www.cuemath.com/geometry/projection-vector/) can be used for dimension reduction or signal filtering.
+
+<img src="../Images/projection.png" alt="Alt text" width="500"/> 
+
 <details>
-  <summary>Python Function to Visualize Dimensionality Reduction</summary>
+  <summary> Code for Dimensionality Reduction through Projection</summary>
 
 ```python
 import numpy as np
@@ -117,7 +122,6 @@ X_small = np.random.rand(30, 3)  # 30 samples with 3 features
 visualize_before_after_pca(X_small, n_components=2)
 
 ```
-<img src="image-2.png" alt="Alt text" width="500"/> 
 </details>
 
 ### Convolutional Layers
@@ -132,8 +136,11 @@ visualize_before_after_pca(X_small, n_components=2)
 - $i+j=n$: The condition for summation, where the indices $i$ and $j$ add up to $n$.
 
 We can use this for signal smoothing which reduces noise and irrelevant details for CNNs. 
+
+<img src="../Images/convolution_smoothing.png" alt="Alt text" width="500"/> 
+
 <details>
-  <summary>Python Function to Visualize Dimensionality Reduction</summary>
+  <summary>Code for Convolution Smoothing</summary>
 
 ```python
 # Given the description, we want to visualize the original signal, the sampling signal (kernel application), and the final output.
@@ -171,7 +178,6 @@ axes[2].set_ylim([0, 1.1])
 plt.tight_layout()
 plt.show()
 ```
-<img src="image-3.png" alt="Alt text" width="500"/> 
 </details>
 
 <p></p>
@@ -192,6 +198,15 @@ For a CNN, we use the network to determine what the kernal should be in the firs
 - $t$: The variable representing time or the independent variable in the output function.
 - $\tau$: A dummy variable of integration, used as a placeholder to integrate over.
 
+
+<img src="../Images/continous_convolution.png" alt="Alt text" width="850"/> 
+<details>
+  <summary>Code for Continuous Convolution</summary>
+
+```python
+
+```
+</details>
 
 <!--START OF FOOTER-->
 <hr style="margin-top:9px;height:1px;border: 0;background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.0));">
