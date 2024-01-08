@@ -5,9 +5,7 @@
 
 ## What is a layer?
 ### Linear Layers
-"Linear" in deep learning != [linear in math](https://en.wikipedia.org/wiki/Linearity#:~:text=In%20mathematics%2C%20a%20linear%20map,(x)%20for%20all%20%CE%B1.). The linear in layers, refers to an [affine operation](https://youtu.be/E3Phj6J287o?si=YW0ya5B9iY3OtiQb) (linear transformation): 
-
-$$ y = Ax + b $$
+"Linear" in deep learning != [linear in math](https://en.wikipedia.org/wiki/Linearity#:~:text=In%20mathematics%2C%20a%20linear%20map,(x)%20for%20all%20%CE%B1.). The linear in layers, refers to an [affine operation](https://youtu.be/E3Phj6J287o?si=YW0ya5B9iY3OtiQb) (linear transformation): $ y = Ax + b $
 
 Where: 
 - y = is the transformed vector.
@@ -16,11 +14,7 @@ Where:
 - b = is a translation vector.
 
 ### Dense Layers/fully connected layers
-The [fully connected](https://www.youtube.com/watch?v=Tsvxx-GGlTg) layer (every neuron is connected) is simple affine transformation that can work with input/outputs from multi-dimensional tensors. The mathematical expression is:
-
-$$ Y[d_1, d_2, \ldots, d_K] = W \cdot X[d_1, d_2, \ldots, d_K] + b $$
-
-The input tensor X with dimensions D<sub>1</sub> × D<sub>2</sub> × … × D<sub>K</sub> × D, resulting in an output tensor Y with dimensions D<sub>1</sub> × D<sub>2</sub> × … × D<sub>K</sub> × D'. The weight matrix W is of size D' × D, and b is the bias vector of dimension D'.
+The [fully connected](https://www.youtube.com/watch?v=Tsvxx-GGlTg) layer (every neuron is connected) is simple affine transformation that can work with input/outputs from multi-dimensional tensors. The mathematical expression is: $ Y[d_1, d_2, \ldots, d_K] = W \cdot X[d_1, d_2, \ldots, d_K] + b $. The input tensor X with dimensions D<sub>1</sub> × D<sub>2</sub> × … × D<sub>K</sub> × D, resulting in an output tensor Y with dimensions D<sub>1</sub> × D<sub>2</sub> × … × D<sub>K</sub> × D'. The weight matrix W is of size D' × D, and b is the bias vector of dimension D'.
 
 <details>
   <summary>Python Function to Visualize Fully Connected Layer</summary>
@@ -128,10 +122,7 @@ visualize_before_after_pca(X_small, n_components=2)
 
 ### Convolutional Layers
 
-Here is the intuition for [discrete](https://www.youtube.com/watch?v=KuXjwB4LzSA) and [continuous](https://www.youtube.com/watch?v=KuXjwB4LzSA) convolutions.
-
-Discrete Convolution:
-$(a * b)_n = \sum_{i+j=n} a_i \cdot b_j$
+[Discrete Convolution](https://www.youtube.com/watch?v=KuXjwB4LzSA): $(a * b)_n = \sum_{i+j=n} a_i \cdot b_j$
 
 - $(a * b)_n$: The $n$-th element of the result of the convolution.
 - $\sum$: The summation symbol, indicating that we sum over all valid $i$ and $j$.
@@ -140,8 +131,54 @@ $(a * b)_n = \sum_{i+j=n} a_i \cdot b_j$
 - $b_j$: The $j$-th element of the sequence $b$.
 - $i+j=n$: The condition for summation, where the indices $i$ and $j$ add up to $n$.
 
-Continuous Convolution:
-$(f * g)(t) = \int_{-\infty}^{\infty} f(\tau) \cdot g(t - \tau) d\tau$
+We can use this for signal smoothing which reduces noise and irrelevant details for CNNs. 
+<details>
+  <summary>Python Function to Visualize Dimensionality Reduction</summary>
+
+```python
+# Given the description, we want to visualize the original signal, the sampling signal (kernel application), and the final output.
+# We'll assume the original signal and kernel from the previous code and visualize them in three separate plots.
+
+# Original signal
+original_signal = np.array([0.1, 0.1, 0.1, 0.1, 0.1, 1.0, 1.0, 1.0, 0.1, 0.1, 0.1, 0.1, 0.1])
+# Kernel for smoothing (e.g., moving average)
+kernel = np.array([1/3, 1/3, 1/3])
+# Convolution result with 'same' mode to preserve original length
+convolved_signal = np.convolve(original_signal, kernel, 'same')
+
+# Set up the subplots
+fig, axes = plt.subplots(3, 1, figsize=(15, 9), sharex=True)
+
+# Plot 1: Original signal
+axes[0].bar(range(len(original_signal)), original_signal, color='green')
+axes[0].set_title('1) Original Signal')
+axes[0].set_ylim([0, 1.1])
+
+# Plot 2: Convolutional sampling signal (kernel application)
+# We will simulate the sampling signal by showing the kernel centered at the peak of the original signal
+peak_index = np.argmax(original_signal)
+sampling_range = range(peak_index - len(kernel) // 2, peak_index + len(kernel) // 2 + 1)
+axes[1].bar(sampling_range, kernel, color='blue', alpha=0.5)
+axes[1].set_title('2) Convolutional Sampling Signal')
+
+# Plot 3: Final output
+axes[2].bar(range(len(convolved_signal)), convolved_signal, color='orange')
+axes[2].set_title('3) Final Output')
+axes[2].set_xlabel('Index')
+axes[2].set_ylim([0, 1.1])
+
+# Adjust layout
+plt.tight_layout()
+plt.show()
+```
+<img src="image-3.png" alt="Alt text" width="500"/> 
+</details>
+
+For a CNN, we use the network to determine what the kernal should be in the first place.
+
+<p></p>
+
+[Continuous Convolution]((https://www.youtube.com/watch?v=KuXjwB4LzSA)): $(f * g)(t) = \int_{-\infty}^{\infty} f(\tau) \cdot g(t - \tau) d\tau$
 
 - $(f * g)(t)$: The convolution of functions $f$ and $g$ evaluated at time $t$.
 - $\int$: The integral symbol, indicating that we integrate over the entire range of $\tau$.
@@ -151,11 +188,6 @@ $(f * g)(t) = \int_{-\infty}^{\infty} f(\tau) \cdot g(t - \tau) d\tau$
 - $d\tau$: The differential element for the variable $\tau$, indicating that we integrate with respect to $\tau$.
 - $t$: The variable representing time or the independent variable in the output function.
 - $\tau$: A dummy variable of integration, used as a placeholder to integrate over.
-
-
-Convolutional layers operate on sub-tensors. In the context of an image, its a small patch of pixels.
-
-Q: Why is that important?
 
 
 <!--START OF FOOTER-->
