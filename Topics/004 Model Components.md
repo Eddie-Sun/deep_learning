@@ -271,7 +271,9 @@ plt.show()
 
 At this point, we dove into the math behind layer + convolution. But what makes a CNN more useful than say a generic neural network? These videos helped me build an intuition: 
 1) [Neural Networks (refresher)](https://www.youtube.com/watch?v=l42lr8AlrHk)
-2) 
+2) [Convolutional Neural Networks Explained](https://www.youtube.com/watch?v=py5byOOHZM8)
+
+Will write about this more in a dedicated CNNs section. The TLDR is that CNNs are preferred over traditional neural networks for tasks like image recognition because they efficiently handle the high dimensionality of image data by applying convolutional filters that detect features such as edges and textures. This approach reduces the number of parameters needed, allowing CNNs to focus on learning spatial hierarchies and patterns in data, which leads to more accurate and efficient processing of visual information.
 
 <!--START OF FOOTER-->
 <hr style="margin-top:9px;height:1px;border: 0;background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.0));">
