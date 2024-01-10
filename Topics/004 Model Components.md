@@ -1,6 +1,6 @@
 # Model Components
 
-###### [Progress] January 6, 2024
+###### [Progress] Started: Jan 6 2024. Last Edit: Jan 9 2024
 ###### [Progress] Elaborated notes from [Little Book of Deep Learning ](https://fleuret.org/public/lbdl.pdf?fbclid=IwAR3jmeQf1k6Q6Qbp6fDmEtklfqo3XMNrHSoIE_2m8By8cpF2sPZjghuq-Zg)
 
 ## What is a layer?
